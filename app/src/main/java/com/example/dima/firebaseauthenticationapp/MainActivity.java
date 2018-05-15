@@ -5,6 +5,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.dima.firebaseauthenticationapp.facebook.FireBaseFacebookAuthenticationActivity;
+import com.example.dima.firebaseauthenticationapp.email_password.FireBaseEmailPassAuthenticationActivity;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -29,7 +34,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity implements  GoogleApiClient.OnConnectionFailedListener, MainView {
+public class MainActivity extends AppCompatActivity implements  GoogleApiClient.OnConnectionFailedListener, GoogleInView {
 
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "MainActivity";
@@ -71,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements  GoogleApiClient.
 
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
+
     }
 
     @OnClick({R.id.sign_in_button, R.id.sign_out_button})
@@ -120,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements  GoogleApiClient.
         } else {
             mStatusTextView.setText("Signed Out");
             mDetailTextView.setText(null);
-            mGoogleIconImageView.setImageDrawable(getResources().getDrawable(R.mipmap.ic_launcher));
+            mGoogleIconImageView.setImageDrawable(getResources().getDrawable(R.drawable.logo_standard));
 
             sign_in_button.setVisibility(View.VISIBLE);
             sign_out_and_disconnect.setVisibility(View.GONE);
@@ -142,6 +148,33 @@ public class MainActivity extends AppCompatActivity implements  GoogleApiClient.
             } else {
                 updateUser(null);
             }
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.firebasefacebookitem:
+
+                Intent firebasefacebookintent = new Intent(this, FireBaseFacebookAuthenticationActivity.class);
+                startActivity(firebasefacebookintent);
+                return true;
+
+            case R.id.emailpasswordfacebookitem:
+
+                Intent firebaseemailpasswordintent = new Intent(this, FireBaseEmailPassAuthenticationActivity.class);
+                startActivity(firebaseemailpasswordintent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

@@ -2,9 +2,6 @@ package com.example.dima.firebaseauthenticationapp;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -23,11 +20,11 @@ public class FireBaseGoogleSigInPresenter {
 
     private static final int RC_SIGN_IN = 9001;
 
-    MainView view;
+    GoogleInView view;
 
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-    public void attachView(MainView view) {
+    public void attachView(GoogleInView view) {
         this.view = view;
     }
 

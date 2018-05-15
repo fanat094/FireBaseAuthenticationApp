@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="81dp"
-    android:background="@color/colorBackgroundWhite">
+    tools:layout_editor_absoluteY="81dp">
 
     <ImageView
-        android:id="@+id/mGoogleIconImageView"
+        android:id="@+id/mFacebookIconImageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginBottom="8dp"
@@ -88,36 +87,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_button"
+
+        <Button
+            android:id="@+id/facebook_button_sign"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:visibility="visible"
-            tools:visibility="visible" />
+            android:layout_centerInParent="true"
+            android:background="@drawable/backround_facebook_btn"
+            android:textColor="@color/colorBackgroundWhite"
+            android:text="Facebook"
+            tools:visibility="visible"/>
 
         <LinearLayout
             android:id="@+id/sign_out_and_disconnect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:orientation="horizontal"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
             android:visibility="gone"
-            tools:visibility="visible">
+            tools:visibility="visible"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
             <Button
                 android:id="@+id/sign_out_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_centerInParent="true"
                 android:background="@drawable/backround_log_out_btn"
                 android:textColor="@color/colorBackgroundWhite"
+                android:layout_weight="1"
                 android:text="Sign Out"
-                tools:visibility="gone"/>
+                tools:visibility="visible"/>
 
         </LinearLayout>
 

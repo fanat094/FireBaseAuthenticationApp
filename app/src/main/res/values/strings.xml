@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">FireBaseAuthenticationApp</string>
     <string name="firebase_web_client_id">1014950420307-6l8jff4kkeg7mnmsef76tj97n60svkta.apps.googleusercontent.com</string>
+
+    <string name="facebook_app_id">154021882116256</string>
+    <string name="fb_login_protocol_scheme">fb154021882116256</string>
+
 </resources>
