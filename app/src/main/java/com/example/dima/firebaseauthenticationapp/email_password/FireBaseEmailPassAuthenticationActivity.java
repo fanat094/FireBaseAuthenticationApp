@@ -114,6 +114,7 @@ public class FireBaseEmailPassAuthenticationActivity extends AppCompatActivity i
 
             editTextEmail.setText("");
             editTextPassword.setText("");
+            progressBar.setVisibility(View.GONE);
 
 
         } else {
@@ -137,6 +138,8 @@ public class FireBaseEmailPassAuthenticationActivity extends AppCompatActivity i
         switch(view.getId())
         {
             case R.id.email_pass_sign_in_btn:
+
+                progressBar.setVisibility(View.VISIBLE);
 
                 hideKeyboard();
                 String sEmail = textInputLayoutEmail.getEditText().getText().toString();

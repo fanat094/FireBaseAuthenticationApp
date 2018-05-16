@@ -108,6 +108,8 @@ public class FireBaseFacebookAuthenticationActivity extends AppCompatActivity im
         switch (view.getId()) {
             case R.id.facebook_button_sign:
 
+                //progressBar.setVisibility(View.VISIBLE);
+
                 LoginManager.getInstance().logInWithReadPermissions(FireBaseFacebookAuthenticationActivity.this,
                         Arrays.asList("email", "public_profile"));
                 LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
@@ -150,6 +152,8 @@ public class FireBaseFacebookAuthenticationActivity extends AppCompatActivity im
 
             mFacebookBtn.setVisibility(View.GONE);
             sign_out_and_disconnect.setVisibility(View.VISIBLE);
+            //progressBar.setVisibility(View.GONE);
+
         } else {
             mStatusTextView.setText("Signed Out");
             mDetailTextView.setText(null);

@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements  GoogleApiClient.
            case R.id.sign_in_button:
                Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
                fireBaseGoogleSigInPresenter.signIn(signInIntent, mAuth, mGoogleApiClient);
+               progressBar.setVisibility(View.VISIBLE);
                break;
 
            case R.id.sign_out_button:
@@ -111,7 +112,6 @@ public class MainActivity extends AppCompatActivity implements  GoogleApiClient.
     @Override
     public void updateUser(FirebaseUser user) {
 
-        progressBar.setVisibility(View.GONE);
         if (user != null) {
             mStatusTextView.setText("Google Email: "+user.getEmail()+"\n"+
                     "Full Name: "+user.getDisplayName());
@@ -122,7 +122,8 @@ public class MainActivity extends AppCompatActivity implements  GoogleApiClient.
                     .into(mGoogleIconImageView);
 
             sign_in_button.setVisibility(View.GONE);
-           sign_out_and_disconnect.setVisibility(View.VISIBLE);
+            sign_out_and_disconnect.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.GONE);
         } else {
             mStatusTextView.setText("Signed Out");
             mDetailTextView.setText(null);
